@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    h1{
+        text-align: center;
+    }
+    body{
+        background-color: azure;
+    }
+    .circle{
+        background-color: green;
+        height: 5rem;
+        width: 5rem;
+       margin: 0 0.5rem 0 0.5rem;
+       border-radius: 100%;
+    }
+    #main-container{
+        display: flex;
+        border: 1px solid;
+        width: max-content;
+       
+        margin: auto;
+         margin-top: 5rem;
+        
+    }
+</style>
+<body>
+    <h1>Whack A Mole</h1>
+    <div id="main-container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+    </div>
+    <h1 id="score"> Score:0</h1>
+    <h1 id="lives">Lives:5</h1>
+</body>
+<script>
+    
+    
+    const circles = document.querySelectorAll(".circle");
+    const scoreBoard = document.getElementById("score");
+    const livesBoard = document.getElementById("lives")
+    let random = 1;
+    let interval = null;
+    let score = 0;
+    let lives = 5;
+     circles[0].addEventListener("click",()=>{
+            if(random == 1){
+                score++;
+
+                scoreBoard.textContent = "Score "+score;
+            }else{
+                lives--;
+                if(lives==0){
+                    clearInterval(interval);
+                    alert("You lose Try next time")
+                }
+                livesBoard.textContent = `Lives ${lives}`;
+               
+            }
+        })
+        circles[1].addEventListener("click",()=>{
+            if(random == 2){
+                 score++;
+
+                scoreBoard.textContent = "Score "+score;
+            }else{
+                lives--;
+                if(lives==0){
+                    clearInterval(interval);
+                    alert("You lose Try next time")
+                }
+                livesBoard.textContent = `Lives ${lives}`;
+            }
+        })
+        circles[2].addEventListener("click",()=>{
+            if(random == 3){
+                 score++;
+
+                scoreBoard.textContent = "Score "+score;
+            }else{
+                lives--;
+                if(lives==0){
+                    clearInterval(interval);
+                    alert("You lose Try next time")
+                }
+                livesBoard.textContent = `Lives ${lives}`;
+            }
+        })
+    interval = setInterval(()=>{
+        random = Math.floor(Math.random()*3)+1;
+       
+        if(random == 1){
+            circles[0].style.backgroundColor = "red"
+            circles[1].style.backgroundColor = "green"
+            circles[2].style.backgroundColor = "green"
+        }else if(random == 2){
+            circles[0].style.backgroundColor = "green"
+            circles[1].style.backgroundColor = "red"
+            circles[2].style.backgroundColor = "green"
+        }else{
+            circles[0].style.backgroundColor = "green"
+            circles[1].style.backgroundColor = "green"
+            circles[2].style.backgroundColor = "red"
+        }
+    },1000)
+</script>
+</html>
